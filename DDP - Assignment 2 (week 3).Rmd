@@ -1,0 +1,69 @@
+---
+title: "Week 3 Assignment: Beverage distribution in Chile"
+author: "Nicolas Lara Torres"
+date: "August 24th, 2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Beverage distribution data (trucks)
+
+```{r data_trucks, echo=FALSE, warning=FALSE, message=FALSE}
+library(plotly)
+
+illapel<-data.frame(city=rep(10,12),
+                    month=c("jul","ago","sept","oct","nov","dic","ene","feb","mar","abr","may","jun"),
+                    Boxes=c(52, 69, 69, 64, 76, 100, 69, 80, 69, 61, 56, 48),
+                    flota=rep(5,12))
+
+san_antonio<-data.frame(city=rep(20,12),
+                    month=c("jul","ago","sept","oct","nov","dic","ene","feb","mar","abr","may","jun"),
+                    Boxes=c(158, 162, 189, 162, 201, 291, 319, 342, 177, 160, 135, 124),
+                    flota=c(11, 11, 13, 11, 12, 15, 16, 16, 13, 12, 11, 11))
+
+oriente<-data.frame(city=rep(30,12),
+                    month=c("jul","ago","sept","oct","nov","dic","ene","feb","mar","abr","may","jun"),
+                    Boxes=c(336, 413, 426, 476, 525, 631, 550, 512, 515, 428, 376, 303),
+                    flota=c(27, 28, 30, 29, 32, 42, 34, 32, 31, 30, 28, 25))
+
+melipilla<-data.frame(city=rep(40,12),
+                    month=c("jul","ago","sept","oct","nov","dic","ene","feb","mar","abr","may","jun"),
+                    Boxes=c(192, 259, 277, 173, 253, 312, 320, 292, 280, 229, 206, 193),
+                    flota=c(13, 13, 15, 14, 12, 15, 15, 15, 15, 13, 13, 13))
+
+rancagua<-data.frame(city=rep(50,12),
+                    month=c("jul","ago","sept","oct","nov","dic","ene","feb","mar","abr","may","jun"),
+                    Boxes=c(340, 428, 456, 455, 430, 603, 350, 361, 333, 275, 192, 176),
+                    flota=c(18, 21, 23, 21, 19, 22, 20, 17, 15, 15, 10, 10))
+
+san_fernando<-data.frame(city=rep(60,12),
+                    month=c("jul","ago","sept","oct","nov","dic","ene","feb","mar","abr","may","jun"),
+                    Boxes=c(203, 266, 294, 267, 359, 481, 391, 402, 328, 242, 206, 174),
+                    flota=c(11, 13, 16, 14, 16, 20, 20, 20, 16, 14, 11, 11))
+
+talca<-data.frame(city=rep(70,12),
+                    month=c("jul","ago","sept","oct","nov","dic","ene","feb","mar","abr","may","jun"),
+                    Boxes=c(243, 294, 279, 213, 356, 486, 200, 191, 98, 76, 64, 58),
+                    flota=c(15, 18, 16, 11, 17, 22, 13, 10, 5, 5, 5, 5))
+
+curico<-data.frame(city=rep(80,12),
+                    month=c("jul","ago","sept","oct","nov","dic","ene","feb","mar","abr","may","jun"),
+                    Boxes=c(167, 204, 235, 220, 288, 411, 326, 317, 264, 209, 162, 143),
+                    flota=c(12, 13, 15, 13, 15, 18, 18, 17, 15, 15, 13, 12))
+
+truck_data<-rbind(illapel, san_antonio, oriente, melipilla, rancagua, san_fernando, talca, curico)
+truck_data$Performance<-truck_data$Boxes/truck_data$flota
+
+plot_ly(truck_data, x=~Boxes, y=~Performance, type = "scatter", mode= "markers",color=~factor(city), size =~(city)^5)
+
+```
+
+## Thanks
+
+**Thanks for your time.**
+
+
+
